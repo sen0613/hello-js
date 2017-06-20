@@ -313,8 +313,8 @@ var article1 = {
     title: 'hello',
     author: 'kim',
     content: '테스트1입니다.'
-}
-console.log(article1)
+};
+console.log(article1);
 
 var article2 = {
     articleId: 2,
@@ -327,9 +327,9 @@ var article2 = {
     sub: function (a,b) {
         return a-b;
     }
-}
-console.log(article2.title)
-console.log(article2.add(3,5))
+};
+console.log(article2.title);
+console.log(article2.add(3,5));
 
 var articleList =
     [
@@ -345,6 +345,6 @@ var articleList =
             author: 'kim',
             content: '테스트2입니다.'
         }
-    ]
-console.log(articleList)
+    ];
+console.log(articleList);
 
