@@ -292,59 +292,168 @@
  }
  */
 
-/* 12. 자바스크립트 객체 - 리터럴 */
-var obj = {};
+/* 12. 자바스크립트 객체 - 리터럴
+ var obj = {};
 
-var num = 5;
-var str = 'hello';
-var bool = true; // false
-var arr = [];
-var obj = {};
+ var num = 5;
+ var str = 'hello';
+ var bool = true; // false
+ var arr = [];
+ var obj = {};
 
-console.log(typeof num);
-console.log(typeof str);
-console.log(typeof bool);
-console.log(typeof arr);
-console.log(typeof obj);
-// 타입을 var로 나타내면서 실제 타입을 추론
+ console.log(typeof num);
+ console.log(typeof str);
+ console.log(typeof bool);
+ console.log(typeof arr);
+ console.log(typeof obj);
+ // 타입을 var로 나타내면서 실제 타입을 추론
 
-var article1 = {
-    articleId: 1,
-    title: 'hello',
-    author: 'kim',
-    content: '테스트1입니다.'
-};
-console.log(article1);
+ var article1 = {
+ articleId: 1,
+ title: 'hello',
+ author: 'kim',
+ content: '테스트1입니다.'
+ };
+ console.log(article1);
 
-var article2 = {
-    articleId: 2,
-    title: 'world',
-    author: 'kim',
-    content: '테스트2입니다.',
-    add: function (a,b) {
-        return a+b;
-    },
-    sub: function (a,b) {
-        return a-b;
-    }
-};
-console.log(article2.title);
-console.log(article2.add(3,5));
+ var article2 = {
+ articleId: 2,
+ title: 'world',
+ author: 'kim',
+ content: '테스트2입니다.',
+ add: function (a,b) {
+ return a+b;
+ },
+ sub: function (a,b) {
+ return a-b;
+ }
+ };
+ console.log(article2.title);
+ console.log(article2.add(3,5));
+ console.log(article2.sub(5,3));
 
-var articleList =
-    [
-        {
-            articleId: 1,
-            title: 'hello',
-            author: 'kim',
-            content: '테스트1입니다.'
-        },
-        {
-            articleId: 2,
-            title: 'world',
-            author: 'kim',
-            content: '테스트2입니다.'
-        }
-    ];
-console.log(articleList);
+ var articleList =
+ [
+ {
+ articleId: 1,
+ title: 'hello',
+ author: 'kim',
+ content: '테스트1입니다.'
+ },
+ {
+ articleId: 2,
+ title: 'world',
+ author: 'kim',
+ content: '테스트2입니다.'
+ }
+ ];
+ console.log(articleList);
+ */
+
+/* 13. jQuery - hello */
+jQuery(document).ready(function () {
+//     var theText = $('h1').text();
+//     console.log(theText);
+//
+// // $('h1').text('너 어디가니?');
+//
+//     var pText = $('p').text();
+//     console.log(pText);
+//
+// //h1과 p의 내용 서로 바꾸기
+//     $('h1').text(pText);
+//     $('p').text(theText);
+
+    // 마지막 list 'Seoul'로 바꾸기
+    // $('li').first().next().text('Seoul');
+
+    // $('#destinations').find('li').first().text('Seoul');
+    // $('.promo');
+
+
+    // // #bookBigCon > ul:nth-child(1) > li:nth-child(2) > div.goods_img.bookTp > span > a > img
+    // $('#bookBigCon').children('ul').first().children('li').first().next()
+    //     .children('div.goods_img.bookTp').children('span').children('a').children('img');
+    //
+    // //#eBookTabCon01 > div.newGoodsArea > ul > li:nth-child(1) > div.goods_info > p.goods_price
+    // $('#eBookTabCon01').children('div.newGoodsArea').children('ul').children('li').first()
+    //     .children('div.goods_info').children('p.goods_price');
+    //
+    // // #yDetailTopWrap > div.topColLft > div > span > em > img
+    // $('#yDetailTopWrap').children('div.topColLft').children('div')
+    //     .children('span').children('em').children('img');
+    //
+    // // #yDetailTopWrap > div.topColRgt > div.gd_infoTop > h2 > span.gd_name
+    // $('#yDetailTopWrap').children('div.topColRgt').children('div.gd_infoTop')
+    //     .children('h2').children('span.gd_name');
+
+    // var price = $('<p>From $3999.99</p>');
+
+    // $('#destinations').children('li.vacation').prepend(price); //vacation요소의 안쪽 가장 첫 부분에 price 요소를 추가
+    // $('#destinations').children('li.vacation').before(price); //vacation요소의 이전에 price 요소를 추가
+    // $('#destinations').children('li.vacation').after(price); //vacation요소의 이후에 price 요소를 추가
+
+    // $('#destinations').children('li.vacation').append(price);
+    // //vacation 요소의 안쪽 가장 마지막 부분에 price 요소를 추가, 이제 버튼 요소를 지워야 함
+
+    // $('#destinations').children('li.vacation').children('button').remove();
+
+    // $('#destinations').on('mouseenter', 'li:nth-child(2)', function () {
+    //     $(this).parent('#destinations').children('li:last-child').slideUp();
+    // });
+    //
+    //     $('#destinations').on('mouseout', 'li:nth-child(2)', function () {
+    //         $(this).parent('#destinations').children('li:last-child').fadeIn();
+    // });
+    $('.vacation').on('click', 'button', function() {
+        //버튼을 클릭하면 버튼 위치에 가격이 나타나게 한다.
+        var price = $('<p>From $3999.99</p>');
+        $(this).after(price);
+
+        //버튼을 클릭하면 버튼을 사라지게 한다.
+        $(this).remove();
+
+    });
+
+    $('#myForm').on('click', 'input:button', function () {
+        $.ajax('https://api.github.com/users/sen0613', {
+            success: function (response) {
+               var login = response.login;
+               var id = response.id;
+               var loc = response.location;
+               var cAt = response.created_at;
+
+               $('#destinations')
+                   .children(':first-child')
+                   .children('h2')
+                   .text(login);
+               $('#destinations')
+                   .children(':nth-child(2)')
+                   .text(id);
+               $('#destinations')
+                    .children(':nth-child(3)')
+                    .text(loc);
+               $('#destinations')
+                    .children(':nth-child(4)')
+                    .text(cAt);
+            }
+        });
+    });
+
+    $('#myForm').on('keyup', 'input:text', function () {
+        //1. 텍스트박스에 쓴 숫자를 가지고 온다.
+        var howMany = isNaN(+$(this).val()) ? 0 : +$(this).val();
+        // console.log(howMany);
+
+        $('#destinations')
+            .children('li:last-child')
+            .children('span')
+            .text((howMany * 562));
+
+
+    });
+
+
+});
+
 
