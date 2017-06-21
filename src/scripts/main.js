@@ -450,7 +450,9 @@ jQuery(document).ready(function () {
             .children('span')
             .text((howMany * 562));
 
-
+        $('#payment')
+            .children('input:text')
+            .val((howMany * 562));
     });
 
 
